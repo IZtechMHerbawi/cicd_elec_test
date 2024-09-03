@@ -4,24 +4,32 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
+    ignore: [
+      "node_modules/which/bin/node-which"  // Add paths you want to ignore
+    ],
   },
   rebuildConfig: {},
   publishers: [
     {
-      name: '@electron-forge/publisher-github',
+      name: '@electron-forge/publisher-s3',
       config: {
-        repository: {
-          owner: 'IZtechMHerbawi',
-          name: 'cicd_elec_test'
-        },
-        prerelease: true
+          bucket: 'pos-version-1',
+          endpoint: 'https://s3.eu-central-1.amazonaws.com',
+          folder: '/',
+          region: 'eu-central-1',
+          public: true  // Necessary for serverless
       }
     }
   ],
+  make_targets: {
+    win32: ['squirrel'],
+  },
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        name: 'my_app',
+      },
     },
     {
       name: '@electron-forge/maker-zip',
