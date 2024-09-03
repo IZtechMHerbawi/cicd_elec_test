@@ -27,8 +27,8 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        name: 'my_app',
-      },
+        author: "Alice and Bob",
+        description: "An example Electron app"      },
     },
   ],
   plugins: [
