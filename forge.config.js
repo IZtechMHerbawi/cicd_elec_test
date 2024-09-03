@@ -13,11 +13,10 @@ module.exports = {
     {
       name: '@electron-forge/publisher-s3',
       config: {
-          bucket: 'pos-version-1',
-          endpoint: 'https://s3.eu-central-1.amazonaws.com',
-          folder: '/',
-          region: 'eu-central-1',
-          public: true  // Necessary for serverless
+        bucket: 'pos-version-1',
+        endpoint: 'https://s3.eu-central-1.amazonaws.com',
+        region: 'eu-central-1',
+        public: true  // Necessary for serverless
       }
     }
   ],
@@ -48,11 +47,8 @@ module.exports = {
     {
       name: '@electron-forge/plugin-vite',
       config: {
-        // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
-        // If you are familiar with Vite configuration, it will look really familiar.
         build: [
           {
-            // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
             entry: 'src/main.js',
             config: 'vite.main.config.mjs',
           },
@@ -69,8 +65,7 @@ module.exports = {
         ],
       },
     },
-    // Fuses are used to enable/disable various Electron functionality
-    // at package time, before code signing the application
+    // Remove @electron-forge/plugin-auto-update
     new FusesPlugin({
       version: FuseVersion.V1,
       [FuseV1Options.RunAsNode]: false,
