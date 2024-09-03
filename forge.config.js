@@ -20,15 +20,13 @@ module.exports = {
       }
     }
   ],
-  make_targets: {
-    win32: ['squirrel'],
-  },
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
       config: {
         author: "Alice and Bob",
-        description: "An example Electron app"      },
+        description: "An example Electron app" 
+      },
     },
   ],
   plugins: [
